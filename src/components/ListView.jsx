@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styles from "../styles/ListView.module.css";
 
 export default function ListView({ data }) {
-	const maxItemPerPage = 10;
+	const maxItemPerPage = 15;
 	
+
 	const totalPages = Math.ceil(data.length / maxItemPerPage);
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemToShow = data.slice(
@@ -23,13 +24,13 @@ export default function ListView({ data }) {
 					</tr>
 				</thead>
 				<tbody>
-					{itemToShow.map((v, i) => {
+					{itemToShow.map(({ id, country, denomination, year }, i) => {
 						return (
 							<tr key={i}>
-								<td>{v.id}</td>
-								<td>{v.name}</td>
-								<td>$100</td>
-								<td>1990</td>
+								<td>{id}</td>
+								<td>{country}</td>
+								<td>${denomination}</td>
+								<td>{year}</td>
 								<td>
 									<button>View</button>
 								</td>

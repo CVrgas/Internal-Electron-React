@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/CardView.module.css";
 
-export default function CardView({ data }) {
-	const maxItemPerPage = 10;
+export default function CardView({ data, selectData }) {
+	const maxItemPerPage = 12;
 
 	const totalPages = Math.ceil(data.length / maxItemPerPage);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -17,11 +17,12 @@ export default function CardView({ data }) {
 	return (
 		<>
 			<div className={styles.cardContainer}>
-				{itemToShow.map((v, i) => {
+				{itemToShow.map(({ id, country, year, denomination }, i) => {
 					return (
 						<div
 							key={i}
 							className={styles.card}
+							onClick={() => selectData(id)}
 						>
 							<img
 								src="https://fakeimg.pl/350x200/?text=World&font=lobster"
@@ -29,13 +30,13 @@ export default function CardView({ data }) {
 							/>
 							<div className={styles.info}>
 								<p>
-									Country <span>{v.name}</span>
+									Country <span>{country}</span>
 								</p>
 								<p>
-									value <span>$10</span>
+									value <span>{denomination}</span>
 								</p>
 								<p>
-									Year <span>2021</span>
+									Year <span>{year}</span>
 								</p>
 							</div>
 						</div>

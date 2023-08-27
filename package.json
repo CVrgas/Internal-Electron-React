@@ -7,8 +7,7 @@
 	"homepage": "./",
 	"scripts": {
 		"start-react": "vite",
-		"start-electron": "nodemon --watch ./public/* --exec \"electron .\"",
-		"dev": "concurrently \"npm run start-react\" \" wait-on tcp:5173 -v && npm run  start-electron\"",
+		"dev": "npm run start-react",
 		"build": "vite build",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview"

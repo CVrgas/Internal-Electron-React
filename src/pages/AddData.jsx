@@ -2,14 +2,42 @@ import React, { useState } from "react";
 import CustomInput from "../components/CustomInput";
 import styles from "../styles/AddData.module.css";
 
-const coin = {
-	Id: "",
-	Date: "",
-	Mintmark: "",
-	Country: "",
-	Grade: "",
-	denotation: "",
+const properties = {
+	coin: {
+		id: 1,
+		country: "Dominican Republic",
+		denomination: "50",
+		year: 1954,
+		composition: "Silver",
+		weight: "20 grams",
+		diameter: "35mm",
+		condition: "Uncirculated",
+		mintage: 10000,
+		description:
+			"Commemorative coin featuring national hero Juan Pablo Duarte.",
+		images: [
+			"https://example.com/coin_front.jpg",
+			"https://example.com/coin_back.jpg",
+		],
+		certification: {
+			graded: true,
+			grading_company: "NGC",
+			grade: "MS 65",
+		},
+		price: 150.0,
+	},
+	bill: {
+		id: 1,
+		denomination: 20,
+		currency: "USD",
+		serialNumber: "AB12345678",
+		issueDate: "2021-05-01",
+		condition: "Very Good",
+		country: "United States",
+		year: 2000,
+	},
 };
+const NumberVariable = ["year", "denomination", "mintage", "price"];
 
 export default function AddData() {
 	const [type, setType] = useState("");
@@ -47,42 +75,26 @@ export default function AddData() {
 						<option value="coin">coin</option>
 					</select>
 				</div>
-				<div className={styles.coinDetails}>
-					<h2>Coin's Details</h2>
-					{Object.keys(coin).map((value, i) => {
-						return (
-							<div
-								key={`CD${i}`}
-								className={styles.inputData}
-							>
-								<input
-									type="text"
-									required
-								/>
-								<div className={styles.underline}></div>
-								<label htmlFor={`labelFor${value}`}>{value}</label>
-							</div>
-						);
-					})}
-				</div>
-				<div className={styles.saleDetails}>
-					<h2>Sale Details</h2>
-					{Object.keys(coin).map((value, i) => {
-						return (
-							<div
-								key={`SD${i}`}
-								className={styles.inputData}
-							>
-								<input
-									type="text"
-									required
-								/>
-								<div className={styles.underline}></div>
-								<label htmlFor={`labelFor${value}`}>{value}</label>
-							</div>
-						);
-					})}
-				</div>
+				{type ? (
+					<div className={styles.coinDetails}>
+						<h2>{`${type}'s Details`}</h2>
+						{Object.keys(properties[type]).map((value, i) => {
+							return (
+								<div
+									key={`CD${i}`}
+									className={styles.inputData}
+								>
+									<input
+										type={NumberVariable.includes(value) ? "number" : "text"}
+										required
+									/>
+									<div className={styles.underline}></div>
+									<label htmlFor={`labelFor${value}`}>{value}</label>
+								</div>
+							);
+						})}
+					</div>
+				) : null}
 				<div className={styles.submitArea}>
 					<button>Guardar</button>
 				</div>
