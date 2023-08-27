@@ -1,0 +1,88 @@
+{
+	"coins": [
+		{
+			"id": 1,
+			"country": "Dominican Republic",
+			"denomination": "50",
+			"year": 1954,
+			"composition": "Silver",
+			"weight": "20 grams",
+			"diameter": "35mm",
+			"condition": "Uncirculated",
+			"mintage": 10000,
+			"description": "Commemorative coin featuring national hero Juan Pablo Duarte.",
+			"images": [
+				"https://example.com/coin_front.jpg",
+				"https://example.com/coin_back.jpg"
+			],
+			"certification": {
+				"graded": true,
+				"grading_company": "NGC",
+				"grade": "MS 65"
+			},
+			"price": 150.0
+		},
+		{
+			"id": 2,
+			"country": "United States",
+			"denomination": "1",
+			"year": 1995,
+			"composition": "Copper",
+			"weight": "3.11 grams",
+			"diameter": "19.05mm",
+			"condition": "Circulated",
+			"mintage": 1000000,
+			"description": "Cent coin featuring President Abraham Lincoln.",
+			"images": [
+				"https://example.com/coin_front.jpg",
+				"https://example.com/coin_back.jpg"
+			],
+			"certification": {
+				"graded": false
+			},
+			"price": 0.01
+		},
+		{
+			"id": 3,
+			"country": "Canada",
+			"denomination": "25",
+			"year": 2017,
+			"composition": "Nickel",
+			"weight": "4.4 grams",
+			"diameter": "23.88mm",
+			"condition": "Uncirculated",
+			"mintage": 5000000,
+			"description": "Quarter coin featuring a caribou.",
+			"images": [
+				"https://example.com/coin_front.jpg",
+				"https://example.com/coin_back.jpg"
+			],
+			"certification": {
+				"graded": true,
+				"grading_company": "PCGS",
+				"grade": "MS 66"
+			},
+			"price": 0.25
+		},
+		{
+			"id": 4,
+			"country": "Australia",
+			"denomination": "2",
+			"year": 2000,
+			"composition": "Aluminium Bronze",
+			"weight": "6.6 grams",
+			"diameter": "20.5mm",
+			"condition": "Circulated",
+			"mintage": 2000000,
+			"description": "Two-dollar coin featuring an aboriginal elder.",
+			"images": [
+				"https://example.com/coin_front.jpg",
+				"https://example.com/coin_back.jpg"
+			],
+			"certification": {
+				"graded": false
+			},
+			"price": 2.0
+		}
+	]
+}
