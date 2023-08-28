@@ -4,13 +4,15 @@
 	"version": "0.0.0",
 	"type": "module",
 	"main": "./public/electron.cjs",
-	"homepage": "./",
+	"homepage": "https://<Username>.github.io/Numismatics-ColletionManager",
 	"scripts": {
 		"start-react": "vite",
 		"dev": "npm run start-react",
 		"build": "vite build",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"dependencies": {
 		"concurrently": "^8.2.0",
@@ -31,6 +33,7 @@
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.3",
+		"gh-pages": "^6.0.0",
 		"rebuild": "^0.1.2",
 		"vite": "^4.4.5",
 		"wait-on": "^7.0.1"
