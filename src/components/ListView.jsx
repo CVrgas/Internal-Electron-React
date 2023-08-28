@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import styles from "../styles/ListView.module.css";
 
 export default function ListView({ data }) {
-	const maxItemPerPage = 15;
-	
+	const maxItemPerPage = 10;
 
 	const totalPages = Math.ceil(data.length / maxItemPerPage);
 	const [currentPage, setCurrentPage] = useState(1);

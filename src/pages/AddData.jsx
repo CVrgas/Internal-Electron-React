@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomInput from "../components/CustomInput";
 import styles from "../styles/AddData.module.css";
+import { useForm } from "react-hook-form";
 
 const properties = {
 	coin: {
@@ -41,17 +42,19 @@ const NumberVariable = ["year", "denomination", "mintage", "price"];
 
 export default function AddData() {
 	const [type, setType] = useState("");
+	const { register, handleSubmit } = useForm();
 
 	function handleChange(e) {
 		setType(e.target.value);
 	}
+	const onSubmit = (data) => console.log(data);
 
 	return (
 		<div className={styles.center}>
 			<h1> Enter Coin/bill data</h1>
 			<form
-				action=""
 				className={styles.UploadForm}
+				onSubmit={handleSubmit(onSubmit)}
 			>
 				<div className={styles.photoInput}>
 					<img
@@ -69,6 +72,7 @@ export default function AddData() {
 						name=""
 						id="type-select"
 						onChange={(e) => handleChange(e)}
+						// {...register(type, { required: true })}
 					>
 						<option value=""></option>
 						<option value="bill">bill</option>
@@ -79,14 +83,23 @@ export default function AddData() {
 					<div className={styles.coinDetails}>
 						<h2>{`${type}'s Details`}</h2>
 						{Object.keys(properties[type]).map((value, i) => {
+							if (value === "id") return;
 							return (
 								<div
-									key={`CD${i}`}
+									key={`${type}-${i}`}
 									className={styles.inputData}
 								>
 									<input
 										type={NumberVariable.includes(value) ? "number" : "text"}
-										required
+										{...register(value)}
+										placeholder=""
+										required={
+											value === "country" ||
+											value === "denomination" ||
+											value === "year"
+												? true
+												: false
+										}
 									/>
 									<div className={styles.underline}></div>
 									<label htmlFor={`labelFor${value}`}>{value}</label>
@@ -96,7 +109,7 @@ export default function AddData() {
 					</div>
 				) : null}
 				<div className={styles.submitArea}>
-					<button>Guardar</button>
+					<button type="submit">Guardar</button>
 				</div>
 			</form>
 		</div>

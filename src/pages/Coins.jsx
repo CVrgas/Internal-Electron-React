@@ -3,42 +3,44 @@ import styles from "../styles/Coins.module.css";
 import ListView from "../components/ListView";
 import CardView from "../components/CardView";
 import Popup from "../components/popup";
-import db from "../assets/localDb.json";
 
 export default function Coins() {
 	const [view, setView] = useState(false);
 	const [search, setSearch] = useState("");
 	const [data, setData] = useState([]);
 	const [selected, setSelected] = useState();
+	const db = JSON.parse(localStorage.getItem("database")).coins;
 
 	const toggleView = () => {
 		setView((prevView) => !prevView);
 	};
 	const handleSearchChange = (e) => {
 		if (e.target.value === "") {
-			setData(db.coins);
+			setData(db);
 			return;
 		}
 		setSearch(e.target.value);
 	};
+
 	const applySearch = async (e) => {
 		if (e.code !== "Enter") return;
-		const result = db.coins.filter(
+		const result = db.filter(
 			(coin) =>
 				coin.country.toLowerCase() === search.toLowerCase() ||
 				coin.year === parseInt(search)
 		);
 		setData(result);
 	};
+
 	function selectData(id) {
-		const selected = db.coins.find((coin) => coin.id === id);
+		const selected = data.find((coin) => coin.id === id);
 		if (selected) {
-			setSelected(db.coins.find((coin) => coin.id === id));
+			setSelected(data.find((coin) => coin.id === id));
 		}
 	}
 
 	useEffect(() => {
-		setData(db.coins);
+		setData(db);
 	}, []);
 
 	return (
@@ -73,7 +75,7 @@ export default function Coins() {
 				</div>
 			</div>
 			<div className={styles.mainWindow}>
-				<h1>Mis Monedas</h1>
+				<h1>My Coins</h1>
 				{view ? (
 					<ListView
 						data={data}

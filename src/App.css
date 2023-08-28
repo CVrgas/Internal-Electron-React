@@ -12,3 +12,11 @@ main {
 	justify-content: center;
 	align-items: center;
 }
+.alert {
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+	z-index: 999;
+	background-color: yellow;
+	font-size: 1.3rem;
+}

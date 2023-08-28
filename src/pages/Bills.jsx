@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/Coins.module.css";
 import ListView from "../components/ListView";
 import CardView from "../components/CardView";
-import db from "../assets/localDb.json";
 
 export default function Bills({ selectData }) {
 	const [view, setView] = useState(false);
@@ -30,7 +29,8 @@ export default function Bills({ selectData }) {
 	};
 
 	useEffect(() => {
-		setData(db.bills);
+		let database = JSON.parse(localStorage.getItem("database"));
+		setData(database.bills);
 	}, []);
 
 	return (
@@ -60,7 +60,7 @@ export default function Bills({ selectData }) {
 				</div>
 			</div>
 			<div className={styles.mainWindow}>
-				<h1>Mis Billetes</h1>
+				<h1>My Bill</h1>
 				{view ? <ListView data={data} /> : <CardView data={data} />}
 			</div>
 		</div>

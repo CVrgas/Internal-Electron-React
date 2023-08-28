@@ -5,8 +5,9 @@ export default function Home() {
 	const [CoinCount, setCoinCount] = useState(0);
 	const [BillCount, setBillCount] = useState(0);
 	useEffect(() => {
-		setCoinCount(db.coins.length);
-		setBillCount(db.bills.length);
+		let database = JSON.parse(localStorage.getItem("database"));
+		setCoinCount(database.coins.length);
+		setBillCount(database.bills.length);
 	}, []);
 
 	return (
@@ -14,8 +15,8 @@ export default function Home() {
 			<div className="notImplemented">
 				<div className="counter">
 					{BillCount >= 1 ? (
-						<h1>
-							{BillCount} <span>billetes</span>
+						<h1 style={{ textAlign: "center" }}>
+							{BillCount} <span>Bills</span>
 						</h1>
 					) : (
 						"not bills"
@@ -23,8 +24,8 @@ export default function Home() {
 				</div>
 				<div className="counter">
 					{CoinCount >= 1 ? (
-						<h1>
-							{CoinCount} <span>monedas</span>
+						<h1 style={{ textAlign: "center" }}>
+							{CoinCount} <span>Coins</span>
 						</h1>
 					) : (
 						"not bills"
