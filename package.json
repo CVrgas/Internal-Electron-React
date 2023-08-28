@@ -3,7 +3,7 @@
 	"private": false,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https://CVrgas.github.io/Numismatics-ColletionManager",
+	"homepage": "https://CVrgas.github.io/",
 	"scripts": {
 		"start-react": "vite",
 		"dev": "npm run start-react",
